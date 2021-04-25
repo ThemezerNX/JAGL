@@ -261,18 +261,10 @@ Context_t MakeMenu(ShapeLinker_t *in, func_ptr buttonHandler, func_ptr runEveryF
 
         else if (ctx.kHeld & (KEY_LSTICK_DOWN | KEY_LSTICK_LEFT | KEY_LSTICK_RIGHT | KEY_LSTICK_UP | KEY_DDOWN | KEY_DLEFT | KEY_DRIGHT | KEY_DUP | KEY_RSTICK_DOWN | KEY_RSTICK_LEFT | KEY_RSTICK_RIGHT | KEY_RSTICK_UP)){            
             int direction = 0, res = -1;
-            
-            if (timer > 1 && ctx.kHeld & (KEY_RSTICK_DOWN | KEY_RSTICK_LEFT | KEY_RSTICK_RIGHT | KEY_RSTICK_UP)){
-            	if (ctx.kHeld & KEY_RSTICK)
-            		timer = 0;
-            	else
-                	timer = 1;
-            }
 
             if (timer == 0){
                 timer = timeOfTimer;
-                if (timeOfTimer > 6)
-                    timeOfTimer -= 6;
+                timeOfTimer = 2;
 
                 if (ctx.kHeld & (KEY_LSTICK_DOWN | KEY_DDOWN | KEY_RSTICK_DOWN))
                     direction = DirectionDown;
